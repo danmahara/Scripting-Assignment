@@ -1,8 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "crud"); // mysqli_connect to connect with database
-if (!$conn) {
-    die("database not connected");
-}
+require_once 'connection.php';
 
 $id = $_GET['id'];
 $sql = "SELECT * FROM users WHERE id='$id' ";

@@ -1,8 +1,9 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "crud"); // mysqli_connect to connect with database
-if (!$conn) {
-    die ("database not connected");
-}
+// $conn = mysqli_connect("localhost", "root", "", "crud"); // mysqli_connect to connect with database
+// if (!$conn) {
+//     die ("database not connected");
+// }
+require_once 'connection.php';
 
 $select = "SELECT * FROM users"; //
 $sResponse = mysqli_query($conn, $select);
@@ -22,7 +23,7 @@ if (!empty ($_POST)) {
     $result = mysqli_query($conn, $sql);
     if ($result) {
         // echo "Data is inserted";
-        header("Location:users.php");
+        header("Location:index.php");
 
     } else {
         echo "Data is not inserted";

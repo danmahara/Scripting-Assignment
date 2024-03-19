@@ -1,16 +1,18 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "crud"); // mysqli_connect to connect with database
-if (!$conn) {
-    die("database not connected");
-}
+require_once 'connection.php';
 
-$id = $_GET['id']; 
+// $conn = mysqli_connect("localhost", "root", "", "crud"); // mysqli_connect to connect with database
+// if (!$conn) {
+//     die ("database not connected");
+// }
+
+$id = $_GET['id'];
 $sql = "SELECT * FROM users WHERE id='$id'";
 $res = mysqli_query($conn, $sql);
 $user = mysqli_fetch_assoc($res);
 
 
-if (!empty($_POST)) {
+if (!empty ($_POST)) {
     $name = $_POST['fullname'];
     $email = $_POST['email'];
     $country = $_POST['country'];
@@ -20,7 +22,7 @@ if (!empty($_POST)) {
     $response = mysqli_query($conn, $updateSql);
 
     if ($response) {
-        header("Location:users.php");
+        header("Location:index.php");
     } else {
         echo "Error";
     }
@@ -30,50 +32,7 @@ if (!empty($_POST)) {
 // print_r(mysqli_fetch_assoc($response));
 
 ?>
-<style>
-    .body {
-        justify-content: center;
-        align-items: center;
-    }
 
-    table,
-    tr,
-    td {
-        /* color: white; */
-        /* color: red; */
-        color: white;
-        text-align: center;
-    }
-
-    a {
-        text-decoration: none;
-        color: blueviolet;
-    }
-
-    #fullname {
-        color: white;
-        background-color: blue;
-        border-radius: 20px;
-        border-color: red;
-        margin: 10px;
-    }
-
-    #email {
-        color: white;
-        background-color: blue;
-        border-radius: 20px;
-        border-color: red;
-        margin: 10px;
-    }
-
-    #country {
-        color: white;
-        background-color: blue;
-        border-radius: 20px;
-        border-color: red;
-        margin: 10px;
-    }
-</style>
 
 <div class="body">
 
